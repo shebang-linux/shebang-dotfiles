@@ -55,12 +55,6 @@ This is a post-installation script designed to help you configure and get the mo
 EOF
 fi
 
-doas wget -qO /usr/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/shebang-include.cfg
-if ! . shebang-include.cfg 2>/dev/null; then
-    say "Failed to locate shebang-include.cfg in PATH" >&2
-    exit 1
-fi
-
 if cat /proc/cmdline | grep -q -i "label"; then
     echo -e "Load keymap (default: us)" && read -p $"> " kbd && setxkbmap $kbd
     echo -e "Install Shebang (y/n)" && read -p $"> " yn
@@ -77,6 +71,13 @@ if [[ "$yn" == "y" ]]; then
     sleep 10s
 else
     say "Not upgrading"
+fi
+
+doas wget -qO /usr/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/shebang-include.cfg
+
+if ! . shebang-include.cfg 2>/dev/null; then
+    say "Failed to locate shebang-include.cfg in PATH" >&2
+    exit 1
 fi
 
 trap 'postinstall' SIGINT && postinstall
