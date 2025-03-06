@@ -52,8 +52,6 @@ Welcome to Shebang Linux, your journey #!s here!
 
 This is a post-installation script designed to help you configure and get the most latest out of Shebang.
 
-You will now be presented with a series of dialogs and you are going to need your superuser password on this.
-
 EOF
 fi
 
