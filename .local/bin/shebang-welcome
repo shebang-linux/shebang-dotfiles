@@ -63,7 +63,7 @@ if ! . shebang-include.cfg 2>/dev/null; then
     exit 1
 fi
 
-if cat /proc/cmdline | grep -i "label"; then
+if cat /proc/cmdline | grep -q -i "label"; then
     echo -e "Load keymap (default: us)" && read -p $"> " kbd && setxkbmap $kbd
     echo -e "Install Shebang (y/n)" && read -p $"> " yn
     if [[ "$yn" == "y" ]]; then
