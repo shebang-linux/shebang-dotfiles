@@ -85,7 +85,7 @@ trap 'postinstall' SIGINT && postinstall
 
 cd /tmp
 doas rm -rfd .config*
-wget -qO config.zip https://github.com/YurinDoctrine/.config/archive/refs/heads/artix.zip && unzip config.zip && mv .config-artix .config
+wget -qO config.zip https://github.com/shebang-linux/shebang-dotfiles/archive/refs/heads/main.zip && unzip config.zip && mv shebang-dotfiles-main .config
 doas cp -rfd /etc/skel/.config/openbox/autostart .config/openbox/autostart
 doas rm -rfd /etc/skel/.*
 doas mkdir /etc/skel/.config
@@ -262,7 +262,7 @@ BUG_REPORT_URL="https://github.com/shebang-linux/shebang/issues/"
 LOGO=shebang-og-logo' | doas tee /etc/os-release && doas chattr +i /etc/os-release
 fi
 
-wget -qO /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/YurinDoctrine/.config/artix/.local/bin/shebang-include.cfg
+wget -qO /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
 
 /usr/lib/firefox-esr/firefox-esr -headless &
 sleep 5s && pkill firefox-esr
@@ -307,4 +307,4 @@ doas rm -rfd /boot/grub/themes && doas update-grub
 
 tmux kill-server
 
-openbox --exit && exit 0
+openbox --exit || exit 1
