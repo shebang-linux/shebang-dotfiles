@@ -41,7 +41,7 @@
                     'Active' - where the active window is -->
     </placement>
     <theme>
-        <name>Shebang</name>
+        <name>Shebang-Dark</name>
         <titleLayout>DSLIMC</titleLayout>
         <!--
       avaible characters are NDSLIMC, each can occur at most once.
