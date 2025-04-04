@@ -14,7 +14,7 @@
         </item>
         <item label="Web Browser">
             <action name="Execute">
-                <execute>firefox-esr</execute>
+                <execute>net.mullvad.MullvadBrowser</execute>
             </action>
         </item>
         <item label="File Manager">
