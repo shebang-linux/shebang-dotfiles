@@ -262,14 +262,16 @@ fi
 wget -qO /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
 
 /var/lib/flatpak/exports/bin/net.mullvad.MullvadBrowser -headless &
-sleep 5s && pkill net.mullvad.MullvadBrowser
+sleep 5s && pkill mullvad
+cd /opt/.var/app/net.mullvad.MullvadBrowser/.mullvad-browser/.mullvad/mullvadbrowser/*default-release*/
 echo -e 'user_pref("ui.systemUsesDarkTheme", 1);
 user_pref("browser.in-content.dark-mode", true);
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
 user_pref("layout.spellcheckDefault", 0);
 user_pref("places.history.enabled", false);
 user_pref("browser.privatebrowsing.autostart", false);
-user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", false);' | tee /opt/.var/app/net.mullvad.MullvadBrowser/.mullvad-browser/.mullvad/mullvadbrowser/*default-release*/user.js
+user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", false);' | tee user.js
+cd
 
 echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 /sbin/iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
