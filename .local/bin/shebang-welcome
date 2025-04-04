@@ -194,6 +194,7 @@ for dir in $HOME $HOME/*/; do doas touch "$dir/.metadata_never_index" "$dir/.noi
 doas rm -rfd /usr/share/xsessions/openbox-kde.desktop
 
 doas flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+doas flatpak install -y net.mullvad.MullvadBrowser
 
 echo -e '[Trigger]
 Operation = Install
@@ -237,9 +238,6 @@ yes | doas pacman -Scc
 
 doas sed -i -e '2c export LD_PRELOAD=' /bin/xdg-open
 
-echo -e '#!/bin/sh
-export LD_PRELOAD= && exec /usr/lib/firefox-esr/firefox-esr -safe-mode -purgecaches `$@`' | doas tee /bin/firefox-esr
-
 echo -e "export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so" | tee -a /home/$USER/.config/openbox/environment
 echo -e "export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so" | doas tee -a /root/.config/openbox/environment
 
@@ -263,14 +261,15 @@ fi
 
 wget -qO /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
 
-/usr/lib/firefox-esr/firefox-esr -headless &
-sleep 5s && pkill firefox-esr
-cd /home/$USER/.mozilla/firefox-esr/*default-release*/ && wget -q https://raw.githubusercontent.com/arkenfox/user.js/master/user.js && sed -i -e 's/user_pref("browser.download.useDownloadDir", false);/\/\/user_pref("browser.download.useDownloadDir", false);/' user.js && sed -i -e 's/user_pref("browser.urlbar.placeholderName", .*/user_pref("browser.urlbar.placeholderName", "DuckDuckGo");/' prefs.js && sed -i -e 's/user_pref("browser.urlbar.placeholderName.private", .*/user_pref("browser.urlbar.placeholderName.private", "DuckDuckGo");/' prefs.js
-echo -e 'user_pref("network.proxy.type", 1);
-user_pref("network.proxy.socks", "127.0.0.1");
-user_pref("network.proxy.socks_port", 9050);
-user_pref("network.proxy.socks_version", 5);' | tee -a user.js
-cd
+/var/lib/flatpak/exports/bin/net.mullvad.MullvadBrowser -headless &
+sleep 5s && pkill net.mullvad.MullvadBrowser
+echo -e 'user_pref("ui.systemUsesDarkTheme", 1);
+user_pref("browser.in-content.dark-mode", true);
+user_pref("layout.css.prefers-color-scheme.content-override", 2);
+user_pref("layout.spellcheckDefault", 0);
+user_pref("places.history.enabled", false);
+user_pref("browser.privatebrowsing.autostart", false);
+user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", false);' | tee /opt/.var/app/net.mullvad.MullvadBrowser/.mullvad-browser/.mullvad/mullvadbrowser/*default-release*/user.js
 
 echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 /sbin/iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
