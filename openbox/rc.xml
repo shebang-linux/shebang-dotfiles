@@ -400,9 +400,9 @@
             <action name="Execute">
                 <startupnotify>
                     <enabled>true</enabled>
-                    <name>firefox-esr</name>
+                    <name>net.mullvad.MullvadBrowser</name>
                 </startupnotify>
-                <command>firefox-esr</command>
+                <command>net.mullvad.MullvadBrowser</command>
             </action>
         </keybind>
         <keybind key="W-l">
