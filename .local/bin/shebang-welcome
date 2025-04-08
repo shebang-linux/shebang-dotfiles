@@ -89,7 +89,6 @@ doas cp -rfd /etc/skel/.config/openbox/autostart .config/openbox/autostart
 doas rm -rfd /etc/skel/.*
 doas mkdir /etc/skel/.config
 doas mkdir /etc/skel/.local
-doas cp -rfd .config/.gmrunrc /etc/skel
 doas cp -rfd .config/.gtkrc-2.0 /etc/skel/.gtkrc-2.0
 doas cp -rfd .config/.fonts.conf /etc/skel
 doas cp -rfd .config/.gtk-bookmarks /etc/skel
