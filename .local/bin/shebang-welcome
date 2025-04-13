@@ -244,6 +244,8 @@ echo -e "nameserver 9.9.9.11
 nameserver 149.112.112.11
 options timeout:1 attempts:3 trust-ad single-request bogus-priv stop-dns-rebind domain-needed" | doas tee /etc/resolv.conf && doas chattr +i /etc/resolv.conf
 
+for IFACE in $(ip -o link show | awk -F': ' '{print $2}' | grep -v 'lo'); do doas tc qdisc replace dev $IFACE root cake >/dev/null; done
+
 if [[ "$NAME" == "Shebang Linux" ]]; then
 echo -e 'NAME="Shebang Linux"
 PRETTY_NAME="Shebang"
