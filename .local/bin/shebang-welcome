@@ -193,7 +193,7 @@ for dir in $HOME $HOME/*/; do doas touch "$dir/.metadata_never_index" "$dir/.noi
 doas rm -rfd /usr/share/xsessions/openbox-kde.desktop
 
 doas flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-doas flatpak install -y net.mullvad.MullvadBrowser
+doas flatpak install -y flathub net.mullvad.MullvadBrowser
 
 echo -e '[Trigger]
 Operation = Install
