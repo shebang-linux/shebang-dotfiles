@@ -11,7 +11,7 @@ updates() {
 }
 
 upgrade() {
-    $(xterm -e 'doas pacman -Syyuu --needed --disable-download-timeout;doas flatpak uninstall --delete-data --unused -y;doas flatpak update -y;doas fwupdtool get-devices;doas fwupdtool refresh --force;doas fwupdtool get-updates;doas fwupdtool update' && polyrestart)
+    $(xterm -e 'doas pacman -Syyuu --needed --disable-download-timeout;doas flatpak uninstall --delete-data --unused -y;doas flatpak update -y;doas fwupdtool refresh --force;doas fwupdtool update' && polyrestart)
     updates
 }
 
