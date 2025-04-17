@@ -104,6 +104,7 @@ doas cp -rfd .config/.newsboat /etc/skel/.newsboat
 doas cp -rfd .config/.irssi /etc/skel/.irssi
 doas cp -rfd .config/* /etc/skel/.config
 doas cp -rfd .config/.local/* /etc/skel/.local
+doas rm -rfd .config*
 cd /home/$USER
 
 BAT=$(ls /sys/class/power_supply/ | grep BAT)
