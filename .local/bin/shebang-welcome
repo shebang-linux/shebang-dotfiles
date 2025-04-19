@@ -198,6 +198,7 @@ doas flatpak install -y flathub net.mullvad.MullvadBrowser
 
 echo -e '[Trigger]
 Operation = Install
+Operation = Remove
 Operation = Upgrade
 Type = Package
 Target = *
@@ -208,6 +209,7 @@ Exec = /sbin/sh -c "rm /tmp/*tar.zst*"' | doas tee /etc/pacman.d/hooks/cleanup.h
 
 echo -e "[Trigger]
 Operation = Install
+Operation = Remove
 Operation = Upgrade
 Type = Package
 Target = bash
