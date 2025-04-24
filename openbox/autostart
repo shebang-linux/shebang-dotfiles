@@ -67,9 +67,6 @@ $(exec nice -n 19 dunst -word_wrap | exec polyrestart) &
 ## Fix monitor
 $(for output in $(xrandr --prop | grep -E -o -i "^[A-Z\-]+-[0-9]+"); do xrandr --output "$output" --set "scaling mode" "Full aspect"; done) &
 
-## Focus desktop
-$(sleep 0.5 && xdotool click 1) &
-
 ## Optional (Uncomment programs you might want to run)
 ## IRC Chat
 $(sleep 10s && exec tmux new -s irc -d torsocks irssi) &
