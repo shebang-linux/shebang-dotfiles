@@ -311,4 +311,6 @@ doas rm -rfd /boot/grub/themes && doas update-grub
 
 tmux kill-server
 
+doas /sbin/prelockd -c /etc/prelockd.conf &
+
 openbox --exit || exit 1
