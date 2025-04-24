@@ -33,7 +33,7 @@ $(sleep 1s && doas renice -n 19 -p $(pgrep scx_flash)) &
 
 $(sleep 1s && doas renice -n 19 -p $(pgrep tor)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pgrep python3)) &
+$(sleep 1s && doas /sbin/prelockd -c /etc/prelockd.conf && doas renice -n 19 -p $(pgrep python3)) &
 
 ## Set keyboard
 setxkbmap replaceme &
