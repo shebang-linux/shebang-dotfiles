@@ -33,6 +33,8 @@ $(sleep 1s && doas renice -n 19 -p $(pgrep scx_flash)) &
 
 $(sleep 1s && doas renice -n 19 -p $(pgrep tor)) &
 
+$(sleep 1s && doas renice -n 19 -p $(pgrep python)) &
+
 ## Set keyboard
 setxkbmap replaceme &
 ## Set keyboard settings - 500 ms delay and 10 cps (characters per second) repeat rate.
