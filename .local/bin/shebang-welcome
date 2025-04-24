@@ -290,6 +290,7 @@ echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 /sbin/echo -n 2048 | tee /proc/sys/dev/hpet/max-user-freq
 /sbin/scx_flash &
 /sbin/preload -c /etc/preload.conf -s '' -l '' -n19
+/sbin/prelockd -c /etc/prelockd.conf &
 /sbin/swapon /swap/swapfile
 /sbin/mount -o noatime,nosuid,nodev -t tmpfs tmpfs /home/$USER
 /sbin/rsync -a --exclude='backup/' /etc/skel/ /home/$USER/
