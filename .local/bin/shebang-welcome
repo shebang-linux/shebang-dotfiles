@@ -291,14 +291,15 @@ echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 /sbin/scx_flash &
 /sbin/preload -c /etc/preload.conf -s '' -l '' -n19
 /sbin/swapon /swap/swapfile
-/sbin/mount -o noatime,nosuid,nodev -t tmpfs tmpfs /home/$USER
+/sbin/mount -o nodiratime,nosuid,nodev -t tmpfs tmpfs /home/$USER
 /sbin/rsync -a --exclude='backup/' /etc/skel/ /home/$USER/
 /sbin/chown -hR $USER:$USER /home/$USER
-/sbin/mount -o noatime,nosuid,nodev -t tmpfs tmpfs /tmp
-/sbin/mount -o noatime,nosuid,nodev,noexec -t tmpfs tmpfs /var/tmp
-/sbin/mount -o noatime,nosuid,nodev,noexec -t tmpfs tmpfs /var/cache
-/sbin/mount -o noatime,nosuid,nodev,noexec -t tmpfs tmpfs /var/log
-/sbin/mount -o remount,noatime,nosuid,nodev,noexec -t tmpfs shm /dev/shm
+/sbin/mount -o nodiratime,nosuid,nodev -t tmpfs tmpfs /tmp
+/sbin/mount -o nodiratime,nosuid,nodev,noexec -t tmpfs tmpfs /var/tmp
+/sbin/mount -o nodiratime,nosuid,nodev,noexec -t tmpfs tmpfs /var/cache
+/sbin/mount -o nodiratime,nosuid,nodev,noexec -t tmpfs tmpfs /var/log
+/sbin/mount -o remount,nodiratime,nosuid,nodev,noexec -t tmpfs shm /dev/shm
+/sbin/mount -o remount,nodiratime,nosuid,nodev,noexec -t tmpfs cgroup /sys/fs/cgroup
 /sbin/sync" | doas tee /etc/rc.local
 
 echo -e "/sbin/echo -n 3 | tee /proc/sys/vm/drop_caches" | doas tee /etc/rc.shutdown
