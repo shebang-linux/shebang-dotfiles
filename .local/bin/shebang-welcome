@@ -68,7 +68,6 @@ fi
 echo -e "Upgrade packages (y/n)" && read -p $"> " yn
 if [[ "$yn" == "y" ]]; then
     doas pacman -Syyu --needed --noconfirm --disable-download-timeout
-    sleep 10s
 else
     say "Not upgrading"
 fi
@@ -266,7 +265,7 @@ fi
 wget -qO /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
 
 /var/lib/flatpak/exports/bin/net.mullvad.MullvadBrowser -headless &
-sleep 5s && pkill mullvad
+pkill mullvad
 cd /opt/.var/app/net.mullvad.MullvadBrowser/.mullvad-browser/.mullvad/mullvadbrowser/*default-release*/
 echo -e 'user_pref("ui.systemUsesDarkTheme", 1);
 user_pref("browser.in-content.dark-mode", true);
