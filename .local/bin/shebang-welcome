@@ -265,7 +265,7 @@ fi
 wget -qO /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
 
 /var/lib/flatpak/exports/bin/net.mullvad.MullvadBrowser -headless &
-pkill mullvad
+sleep 1s && pkill mullvad
 cd /opt/.var/app/net.mullvad.MullvadBrowser/.mullvad-browser/.mullvad/mullvadbrowser/*default-release*/
 echo -e 'user_pref("ui.systemUsesDarkTheme", 1);
 user_pref("browser.in-content.dark-mode", true);
