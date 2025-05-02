@@ -287,6 +287,8 @@ echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 /sbin/echo -n powersupersave | tee /sys/module/pcie_aspm/parameters/policy
 /sbin/echo -n 2048 | tee /sys/class/rtc/rtc0/max_user_freq
 /sbin/echo -n 2048 | tee /proc/sys/dev/hpet/max-user-freq
+/sbin/setpci -v -s '*:*' latency_timer=10 >/dev/null 2>&1
+/sbin/setpci -v -s '0:0' latency_timer=0 >/dev/null 2>&1
 /sbin/scx_flash &
 /sbin/preload -c /etc/preload.conf -s '' -l '' -n19
 /sbin/swapon /swap/swapfile
