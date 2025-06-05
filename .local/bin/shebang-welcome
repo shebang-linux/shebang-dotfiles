@@ -248,7 +248,6 @@ options timeout:1 attempts:3 trust-ad single-request bogus-priv stop-dns-rebind 
 
 for IFACE in $(ip -o link show | awk -F': ' '{print $2}' | grep -v 'lo'); do doas tc qdisc replace dev $IFACE root cake >/dev/null; done
 
-if [[ "$NAME" == "Shebang Linux" ]]; then
 echo -e 'NAME="Shebang Linux"
 PRETTY_NAME="Shebang 25.0"
 ID=shebang
@@ -260,7 +259,6 @@ DOCUMENTATION_URL="https://github.com/shebang-linux/shebang/"
 SUPPORT_URL="https://github.com/orgs/shebang-linux/discussions/"
 BUG_REPORT_URL="https://github.com/shebang-linux/shebang/issues/"
 LOGO=shebang-og-logo' | doas tee /etc/os-release && doas chattr +i /etc/os-release
-fi
 
 wget -qO /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
 
