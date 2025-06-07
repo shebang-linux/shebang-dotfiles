@@ -279,6 +279,9 @@ echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 /sbin/iptables -A OUTPUT -m state --state INVALID -j DROP
 /sbin/iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 /sbin/echo -n 5 | tee /proc/sys/vm/laptop_mode
+/sbin/echo -n auto | tee /sys/devices/*/power/control
+/sbin/echo -n auto | tee /sys/bus/i2c/devices/*/power/control
+/sbin/echo -n auto | tee /sys/bus/pci/devices/*/power/control
 /sbin/echo -n guided | tee /sys/devices/system/cpu/amd_pstate/status
 /sbin/echo -n guided | tee /sys/devices/system/cpu/intel_pstate/status
 /sbin/echo -n conservative | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
