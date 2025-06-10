@@ -292,6 +292,8 @@ echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 /sbin/echo -n powersupersave | /sbin/tee /sys/module/pcie_aspm/parameters/policy
 /sbin/echo -n 2048 | /sbin/tee /sys/class/rtc/rtc0/max_user_freq
 /sbin/echo -n 2048 | /sbin/tee /proc/sys/dev/hpet/max-user-freq
+/sbin/echo -n 1 | /sbin/tee /sys/devices/virtual/workqueue/cpumask
+/sbin/echo -n 1 | /sbin/tee /sys/devices/virtual/workqueue/*/cpumask
 /sbin/setpci -v -s '*:*' latency_timer=10 >/dev/null 2>&1
 /sbin/setpci -v -s '0:0' latency_timer=0 >/dev/null 2>&1
 /sbin/scx_flash &
