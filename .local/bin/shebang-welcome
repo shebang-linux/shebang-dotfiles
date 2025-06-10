@@ -307,10 +307,9 @@ echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 /sbin/mount -o nodiratime,nosuid,nodev,noexec -t tmpfs tmpfs /var/cache
 /sbin/mount -o nodiratime,nosuid,nodev,noexec -t tmpfs tmpfs /var/log
 /sbin/mount -o remount,nodiratime,nosuid,nodev,noexec -t tmpfs shm /dev/shm
-/sbin/mount -o remount,nodiratime,nosuid,nodev,noexec -t tmpfs cgroup /sys/fs/cgroup
-/sbin/sync" | doas tee /etc/rc.local
+/sbin/mount -o remount,nodiratime,nosuid,nodev,noexec -t tmpfs cgroup /sys/fs/cgroup" | doas tee /etc/rc.local
 
-echo -e "/sbin/echo -n 3 | tee /proc/sys/vm/drop_caches" | doas tee /etc/rc.shutdown
+echo -e "/sbin/sync && /sbin/echo -n 3 | tee /proc/sys/vm/drop_caches" | doas tee /etc/rc.shutdown
 
 doas chsh -s $(which mksh) $(whoami)
 doas chsh -s $(which mksh) root
