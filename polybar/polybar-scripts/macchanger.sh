@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
-if [[ $(ip link | grep 'UP mode' | wc -l) -gt 0 ]]; then
-	ip link | awk '/UP mode/ {print $2}' | tr -d ':' | tee ~/.config/polybar/polybar-scripts/iface >/dev/null 2>&1
+if [[ $(ip link | grep 'state UP' | wc -l) -gt 0 ]]; then
+	ip link | awk '/state UP/ {print $2}' | tr -d ':' | tee ~/.config/polybar/polybar-scripts/iface >/dev/null 2>&1
 else
 	IFACE=$(cat ~/.config/polybar/polybar-scripts/iface)
 	if [ "$IFACE" ]; then
