@@ -6,8 +6,8 @@ counter=1
 
 while [ $counter -le 5 ]
 do
-	news_title=$(echo "$news_feed" | xmlstarlet sel -t -m '//item' -v 'title' -n | awk 'NR=='$counter'')
-	news_link=$(echo "$news_feed" | xmlstarlet sel -t -m '//item' -v 'link' -n | awk 'NR=='$counter'')
+	news_title=$(echo -e "$news_feed" | xmlstarlet sel -t -m '//item' -v 'title' -n | awk 'NR=='$counter'')
+	news_link=$(echo -e "$news_feed" | xmlstarlet sel -t -m '//item' -v 'link' -n | awk 'NR=='$counter'')
 
 	[[ $(ip link | grep 'state UP' | wc -l) -gt 0 ]] && notify=$(notify-send -u critical -i notification-message-im -A "open=Open URL" "$news_title" "Read complete article here") && [[ $notify == "open" ]] && xdg-open "$news_link" &
 
