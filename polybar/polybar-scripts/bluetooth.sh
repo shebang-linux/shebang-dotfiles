@@ -5,22 +5,22 @@ bluetooth_print() {
 	if [ "$(rfkill | grep -i Bluetooth | grep -o unblocked | wc -l)" -ge 2 ]; then
 		bluetoothctl | while read -r; do
 			if bluetoothctl show | grep -q "Powered: yes"; then
-				echo ""
+				echo -e ""
 				devices_paired=$(bluetoothctl devices | grep -i Device | cut -d ' ' -f 2)
 				echo -e "$devices_paired" | while read -r line; do
 					bluetoothctl connect "$line" >/dev/null
 					device_info=$(bluetoothctl info "$line")
 					if echo -e "$device_info" | grep -q "Connected: yes"; then
-						device_output=$(echo "$device_info" | grep "Alias" | cut -d ' ' -f 2-)
-						echo "  $device_output"
+						device_output=$(echo -e "$device_info" | grep "Alias" | cut -d ' ' -f 2-)
+						echo -e "  $device_output"
 					fi
 				done
 			else
-				echo  ""
+				echo -e ""
 			fi
 		done
 	else
-		echo  ""
+		echo -e ""
 	fi
     else
         echo ""
