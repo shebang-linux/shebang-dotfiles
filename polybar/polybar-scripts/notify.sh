@@ -16,14 +16,14 @@ case "$1" in
                 grep -q "$(xdpyinfo | grep dimensions | awk '{print $2}')" || \
                 dunstctl set-paused toggle
             fi
-            echo "\uf0a2"
+            echo -e "\uf0a2"
         else
             if [[ ! -e "$HOME/.config/polybar/polybar-scripts/dnd" ]]; then
                 xdotool getwindowgeometry "$(xdotool getactivewindow)" | \
                 grep -q "$(xdpyinfo | grep dimensions | awk '{print $2}')" && \
                 dunstctl set-paused toggle
             fi
-            echo "\uf0f3"
+            echo -e "\uf0f3"
         fi
         ;;
 esac
