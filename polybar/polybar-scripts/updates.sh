@@ -6,7 +6,7 @@ updates() {
         if [ "$list_upgradeable" -gt "0" ]; then
             echo "[u]"
         else
-            echo ''
+            echo ""
         fi
 }
 
