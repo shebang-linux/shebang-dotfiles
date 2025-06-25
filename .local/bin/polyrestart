@@ -1,9 +1,9 @@
 #!/usr/bin/sh
 
 if type "xrandr"; then
-  for i in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MON=$i killall polybar; exec nice -n 19 polybar -q --reload main -c ~/.config/polybar/config.ini &
+  for i in $(xrandr --query | grep " connected" | cut -d " " -f1); do
+    MON=$i exec nice -n 19 polybar -q --reload main -c ~/.config/polybar/config.ini &
   done
 else
-  killall polybar; exec nice -n 19 polybar -q --reload main -c ~/.config/polybar/config.ini &
+  exec nice -n 19 polybar -q --reload main -c ~/.config/polybar/config.ini &
 fi
