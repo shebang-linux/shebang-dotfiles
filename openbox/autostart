@@ -54,16 +54,16 @@ xset s off -dpms &
 xrdb -merge ~/.Xresources &
 
 ## Start Desktop
-$(exec nice -n 19 pcmanfm-qt --desktop) &
+$(exec nice -n 19 pcmanfm-qt --desktop >/dev/null 2>&1) &
 
 ## Start LXDE PolKit
-$(exec nice -n 19 lxpolkit) &
+$(exec nice -n 19 lxpolkit >/dev/null 2>&1) &
 
 ## Group start:
 ## 1. dunst - start
 ## 2. polybar - start
 ## 3. tint2 - start
-$(exec nice -n 19 dunst -word_wrap | exec polyrestart | exec nice -n 19 tint2) &
+$(exec nice -n 19 dunst -word_wrap >/dev/null 2>&1 | exec polyrestart | exec nice -n 19 tint2 >/dev/null 2>&1) &
 
 ## Fix monitor
 $(for output in $(xrandr --prop | grep -E -o -i "^[A-Z\-]+-[0-9]+"); do xrandr --output "$output" --set "scaling mode" "Full aspect"; done) &
