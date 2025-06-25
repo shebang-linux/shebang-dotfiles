@@ -1,7 +1,7 @@
 #-------------------------------------
 # Backgrounds
 # Background 1: Panel
-rounded = 0
+rounded = 4
 border_width = 0
 border_sides = TBLR
 background_color = #000000 25
@@ -46,7 +46,7 @@ border_color_pressed = #aa7700 100
 
 # Background 5: Tooltip
 rounded = 1
-border_width = 1
+border_width = 0
 border_sides = TBLR
 background_color = #222222 100
 border_color = #ffffff 100
