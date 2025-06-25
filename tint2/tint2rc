@@ -4,52 +4,52 @@
 rounded = 0
 border_width = 0
 border_sides = TBLR
-background_color = #000000 60
-border_color = #000000 30
-background_color_hover = #000000 60
-border_color_hover = #000000 30
-background_color_pressed = #000000 60
-border_color_pressed = #000000 30
+background_color = #000000 25
+border_color = #ffffff 100
+background_color_hover = #000000 50
+border_color_hover = #000000 25
+background_color_pressed = #000000 50
+border_color_pressed = #000000 25
 
 # Background 2: Default task, Iconified task
 rounded = 4
 border_width = 1
 border_sides = TBLR
-background_color = #777777 20
-border_color = #777777 30
-background_color_hover = #aaaaaa 22
-border_color_hover = #eaeaea 44
-background_color_pressed = #555555 4
-border_color_pressed = #eaeaea 44
+background_color = #000000 100
+border_color = #aaaaaa 25
+background_color_hover = #aaaaaa 25
+border_color_hover = #555555 5
+background_color_pressed = #555555 5
+border_color_pressed = #eaeaea 50
 
 # Background 3: Active task
 rounded = 4
 border_width = 1
 border_sides = TBLR
-background_color = #777777 20
-border_color = #ffffff 40
-background_color_hover = #aaaaaa 22
-border_color_hover = #eaeaea 44
-background_color_pressed = #555555 4
-border_color_pressed = #eaeaea 44
+background_color = #aaaaaa 25
+border_color = #ffffff 100
+background_color_hover = #aaaaaa 25
+border_color_hover = #ffffff 100
+background_color_pressed = #555555 5
+border_color_pressed = #eaeaea 50
 
 # Background 4: Urgent task
 rounded = 4
 border_width = 1
 border_sides = TBLR
 background_color = #aa4400 100
-border_color = #aa7733 100
+border_color = #aa7700 100
 background_color_hover = #cc7700 100
-border_color_hover = #aa7733 100
-background_color_pressed = #555555 4
-border_color_pressed = #aa7733 100
+border_color_hover = #aa7700 100
+background_color_pressed = #555555 5
+border_color_pressed = #aa7700 100
 
 # Background 5: Tooltip
 rounded = 1
 border_width = 1
 border_sides = TBLR
 background_color = #222222 100
-border_color = #333333 100
+border_color = #ffffff 100
 background_color_hover = #ffffaa 100
 border_color_hover = #000000 100
 background_color_pressed = #ffffaa 100
@@ -57,7 +57,7 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = LTSC
+panel_items = TBS
 panel_size = 100% 25
 panel_margin = 0 0
 panel_padding = 2 0 2
@@ -169,11 +169,11 @@ launcher_tooltip = 1
 
 #-------------------------------------
 # Battery
-battery_tooltip = 1
+battery_tooltip = 0
 battery_low_status = 15
 battery_low_cmd = notify-send 'Battery Low!'
 battery_full_cmd = notify-send 'Battery Full!'
-battery_font_color = #ffffff 100
+battery_font_color = #000000 100
 bat1_format =
 bat2_format =
 battery_padding = 1 0
