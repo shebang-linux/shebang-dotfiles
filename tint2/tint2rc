@@ -103,7 +103,7 @@ task_align = center
 
 #-------------------------------------
 # Task
-task_text = 1
+task_text = 0
 task_icon = 1
 task_centered = 1
 urgent_nb_of_blink = 100000
@@ -189,7 +189,7 @@ ac_disconnected_cmd =
 
 #-------------------------------------
 # Tooltip
-tooltip_show_timeout = 0.5
+tooltip_show_timeout = 0.1
 tooltip_hide_timeout = 0.1
 tooltip_padding = 4 4
 tooltip_background_id = 5
