@@ -285,14 +285,15 @@ echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 /sbin/echo -n auto | /sbin/tee /sys/bus/pci/devices/*/*/power/control
 /sbin/echo -n guided | /sbin/tee /sys/devices/system/cpu/amd_pstate/status
 /sbin/echo -n guided | /sbin/tee /sys/devices/system/cpu/intel_pstate/status
-/sbin/echo -n conservative | /sbin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 /sbin/echo -n power | /sbin/tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
 /sbin/echo -n powersupersave | /sbin/tee /sys/module/pcie_aspm/parameters/policy
-/sbin/echo -n 2048 | /sbin/tee /sys/class/rtc/rtc0/max_user_freq
-/sbin/echo -n 2048 | /sbin/tee /proc/sys/dev/hpet/max-user-freq
+/sbin/echo -n teo | /sbin/tee /sys/devices/system/cpu/cpuidle/current_governor
+/sbin/echo -n conservative | /sbin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+/sbin/echo -n 1 | /sbin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_min_freq
 /sbin/echo -n 1 | /sbin/tee /sys/devices/virtual/workqueue/cpumask
 /sbin/echo -n 1 | /sbin/tee /sys/devices/virtual/workqueue/*/cpumask
-/sbin/echo -n teo | /sbin/tee /sys/devices/system/cpu/cpuidle/current_governor
+/sbin/echo -n 2048 | /sbin/tee /sys/class/rtc/rtc0/max_user_freq
+/sbin/echo -n 2048 | /sbin/tee /proc/sys/dev/hpet/max-user-freq
 /sbin/setpci -v -s '*:*' latency_timer=10 >/dev/null 2>&1
 /sbin/setpci -v -s '0:0' latency_timer=0 >/dev/null 2>&1
 /sbin/scx_flash &
