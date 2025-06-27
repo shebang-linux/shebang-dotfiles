@@ -11,7 +11,7 @@ updates() {
 }
 
 upgrade() {
-    $(xterm -e 'doas pacman -Syyuu --needed --disable-download-timeout;doas flatpak uninstall --delete-data --unused -y;doas flatpak update -y;doas fwupdtool refresh --force;doas fwupdtool update';polyrestart)
+    $(xterm -e 'doas pacman -Syyuu --needed --disable-download-timeout;doas flatpak uninstall --delete-data --unused -y;doas flatpak update -y;doas fwupdmgr refresh --assume-yes --force;doas fwupdmgr update --assume-yes';polyrestart)
 }
 
 case "$1" in
