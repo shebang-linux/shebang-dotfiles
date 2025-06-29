@@ -1,0 +1,28 @@
+#!/bin/bash -e
+
+if [ "$(id -u)" -ne 0 ]; then
+  echo "This script must be run as root, use 'sudo' or run it as root."
+  exit 1
+fi
+
+usage() {
+  echo "Usage: $0 PACKAGE"
+  echo "Example: $0 pacman"
+  exit 1
+}
+
+if [ "$#" -ne 1 ]; then
+  usage
+fi
+
+PKG=$(pacman -Q | grep "$1" | awk '{print $1}')
+
+VER=$(pacman -Q | grep "$PKG" | awk '{print $2}')
+
+PKG_LIST=$(curl -s "https://archive.artixlinux.org/packages/${PKG:0:1}/$PKG/" | grep -oP "$PKG-[^\"<]*?\.pkg\.tar\.zst" | sort -Vu)
+
+OLD_PKG=$(echo -e "$PKG_LIST" | grep -B100 "$PKG-$VER" | grep -v "$VER" | tail -n1)
+
+wget -qO "/tmp/${OLD_PKG}" "https://archive.artixlinux.org/packages/${PKG:0:1}/$PKG/$OLD_PKG"
+
+pacman -U --noconfirm "$OLD_PKG"
