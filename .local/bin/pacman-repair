@@ -25,4 +25,4 @@ OLD_PKG=$(echo -e "$PKG_LIST" | grep -B100 "$PKG-$VER" | grep -v "$VER" | tail -
 
 wget -qO "/tmp/${OLD_PKG}" "https://archive.artixlinux.org/packages/${PKG:0:1}/$PKG/$OLD_PKG"
 
-pacman -U --noconfirm "$OLD_PKG"
+pacman -U --noconfirm "/tmp/${OLD_PKG}"
