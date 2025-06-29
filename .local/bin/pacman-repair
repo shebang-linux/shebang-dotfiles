@@ -15,9 +15,9 @@ if [ "$#" -ne 1 ]; then
   usage
 fi
 
-PKG=$(pacman -Q | grep "$1" | awk '{print $1}')
+PKG=$(pacman -Q | grep "$1" | awk '{print $1}' | head -n1)
 
-VER=$(pacman -Q | grep "$PKG" | awk '{print $2}')
+VER=$(pacman -Q | grep "$PKG" | awk '{print $2}' | head -n1)
 
 PKG_LIST=$(curl -s "https://archive.artixlinux.org/packages/${PKG:0:1}/$PKG/" | grep -oP "$PKG-[^\"<]*?\.pkg\.tar\.zst" | sort -Vu)
 
