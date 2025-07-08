@@ -26,7 +26,8 @@
 	set noswapfile
 	set nobackup
 	set incsearch
-	set history=25
+	set history=0
+	set viminfofile=NONE
 	set nocompatible
 	set number relativenumber
 	set wildmenu
