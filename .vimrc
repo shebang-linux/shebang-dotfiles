@@ -56,6 +56,7 @@
 	set backspace=indent,eol,start
 	set linebreak
 	set shm+=I
+	set shell=/bin/bash
 
 	if !has('gui_running')
 	  set t_Co=256
