@@ -61,11 +61,20 @@
 	  set t_Co=256
 	endif
 
+" Center cursor when entering insert mode
+	autocmd InsertEnter * norm zz
+
 " Set F2 to auto format
 	noremap <F2> gg=G<Enter>
 
-" Center cursor when entering insert mode
-	autocmd InsertEnter * norm zz
+" Set auto close tags, quotes, brackets
+	inoremap " ""<Esc>i
+	inoremap ' ''<Esc>i
+	inoremap ` ``<Esc>i
+	inoremap { {}<Esc>i
+	inoremap [ []<Esc>i
+	inoremap ( ()<Esc>i
+	inoremap < <><Esc>i
 
 " Set CTRL-Delete or ALT-Delete act as delete words forwards
 	inoremap <C-Delete> <C-o>diw
