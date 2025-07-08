@@ -130,6 +130,14 @@
             <name>2</name>
             <name>3</name>
             <name>4</name>
+            <name>5</name>
+            <name>6</name>
+            <name>7</name>
+            <name>8</name>
+            <name>9</name>
+            <name>10</name>
+            <name>11</name>
+            <name>12</name>
         </names>
         <popupTime>325</popupTime>
         <!-- The number of milliseconds to show the popup for when switching
@@ -182,25 +190,25 @@
     <keyboard>
         <chainQuitKey>C-g</chainQuitKey>
         <!-- Keybindings for desktop switching -->
-        <keybind key="C-A-Left">
+        <keybind key="W-Left">
             <action name="GoToDesktop">
                 <to>left</to>
                 <wrap>no</wrap>
             </action>
         </keybind>
-        <keybind key="C-A-Right">
+        <keybind key="W-Right">
             <action name="GoToDesktop">
                 <to>right</to>
                 <wrap>no</wrap>
             </action>
         </keybind>
-        <keybind key="C-A-Up">
+        <keybind key="W-Up">
             <action name="GoToDesktop">
                 <to>up</to>
                 <wrap>no</wrap>
             </action>
         </keybind>
-        <keybind key="C-A-Down">
+        <keybind key="W-Down">
             <action name="GoToDesktop">
                 <to>down</to>
                 <wrap>no</wrap>
@@ -297,11 +305,6 @@
         <keybind key="A-Escape">
             <action name="Iconify"/>
         </keybind>
-	<keybind key="A-BackSpace">
-            <action name="Lower"/>
-            <action name="FocusToBottom"/>
-            <action name="Unfocus"/>
-	</keybind>
 	<keybind key="A-Return">
             <action name="ToggleMaximizeFull"/>
 	</keybind>
@@ -373,7 +376,7 @@
                 </finalactions>
             </action>
         </keybind>
-        <keybind key="C-A-Tab">
+        <keybind key="W-S-Tab">
             <action name="NextWindow">
                 <panels>yes</panels>
                 <desktop>yes</desktop>
@@ -385,22 +388,22 @@
             </action>
         </keybind>
         <!-- Keybindings for window switching with the arrow keys -->
-        <keybind key="W-Left">
+        <keybind key="A-C-Left">
             <action name="DirectionalCycleWindows">
                 <direction>left</direction>
             </action>
         </keybind>
-        <keybind key="W-Right">
+        <keybind key="A-C-Right">
             <action name="DirectionalCycleWindows">
                 <direction>right</direction>
             </action>
         </keybind>
-        <keybind key="W-Up">
+        <keybind key="A-C-Up">
             <action name="DirectionalCycleWindows">
                 <direction>up</direction>
             </action>
         </keybind>
-        <keybind key="W-Down">
+        <keybind key="A-C-Down">
             <action name="DirectionalCycleWindows">
                 <direction>down</direction>
             </action>
