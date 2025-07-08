@@ -206,25 +206,25 @@
                 <wrap>no</wrap>
             </action>
         </keybind>
-        <keybind key="S-A-Left">
+        <keybind key="W-S-Left">
             <action name="SendToDesktop">
                 <to>left</to>
                 <wrap>no</wrap>
             </action>
         </keybind>
-        <keybind key="S-A-Right">
+        <keybind key="W-S-Right">
             <action name="SendToDesktop">
                 <to>right</to>
                 <wrap>no</wrap>
             </action>
         </keybind>
-        <keybind key="S-A-Up">
+        <keybind key="W-S-Up">
             <action name="SendToDesktop">
                 <to>up</to>
                 <wrap>no</wrap>
             </action>
         </keybind>
-        <keybind key="S-A-Down">
+        <keybind key="W-S-Down">
             <action name="SendToDesktop">
                 <to>down</to>
                 <wrap>no</wrap>
@@ -250,17 +250,63 @@
                 <to>4</to>
             </action>
         </keybind>
+        <keybind key="W-F5">
+            <action name="GoToDesktop">
+                <to>5</to>
+            </action>
+        </keybind>
+        <keybind key="W-F6">
+            <action name="GoToDesktop">
+                <to>6</to>
+            </action>
+        </keybind>
+        <keybind key="W-F7">
+            <action name="GoToDesktop">
+                <to>7</to>
+            </action>
+        </keybind>
+        <keybind key="W-F8">
+            <action name="GoToDesktop">
+                <to>8</to>
+            </action>
+        </keybind>
+        <keybind key="W-F9">
+            <action name="GoToDesktop">
+                <to>9</to>
+            </action>
+        </keybind>
+        <keybind key="W-F10">
+            <action name="GoToDesktop">
+                <to>10</to>
+            </action>
+        </keybind>
+        <keybind key="W-F11">
+            <action name="GoToDesktop">
+                <to>11</to>
+            </action>
+        </keybind>
+        <keybind key="W-F12">
+            <action name="GoToDesktop">
+                <to>12</to>
+            </action>
+        </keybind>
         <keybind key="W-Escape">
             <action name="ToggleShowDesktop"/>
         </keybind>
         <!-- Keybindings for windows -->
-        <keybind key="A-F4">
-            <action name="Close"/>
-        </keybind>
         <keybind key="A-Escape">
+            <action name="Iconify"/>
+        </keybind>
+	<keybind key="A-BackSpace">
             <action name="Lower"/>
             <action name="FocusToBottom"/>
             <action name="Unfocus"/>
+	</keybind>
+	<keybind key="A-Return">
+            <action name="ToggleMaximizeFull"/>
+	</keybind>
+        <keybind key="A-F4">
+            <action name="Close"/>
         </keybind>
         <keybind key="A-space">
             <action name="ShowMenu">
@@ -339,22 +385,22 @@
             </action>
         </keybind>
         <!-- Keybindings for window switching with the arrow keys -->
-        <keybind key="W-S-Right">
-            <action name="DirectionalCycleWindows">
-                <direction>right</direction>
-            </action>
-        </keybind>
-        <keybind key="W-S-Left">
+        <keybind key="W-Left">
             <action name="DirectionalCycleWindows">
                 <direction>left</direction>
             </action>
         </keybind>
-        <keybind key="W-S-Up">
+        <keybind key="W-Right">
+            <action name="DirectionalCycleWindows">
+                <direction>right</direction>
+            </action>
+        </keybind>
+        <keybind key="W-Up">
             <action name="DirectionalCycleWindows">
                 <direction>up</direction>
             </action>
         </keybind>
-        <keybind key="W-S-Down">
+        <keybind key="W-Down">
             <action name="DirectionalCycleWindows">
                 <direction>down</direction>
             </action>
@@ -489,7 +535,7 @@
             </action>
         </keybind>
         <!-- Keybindings for window tiling -->
-        <keybind key="W-Left">    	# HalfLeftScreen
+        <keybind key="W-A-Left">    	# HalfLeftScreen
             <action name="UnmaximizeFull"/>
             <action name="MoveResizeTo">
                 <x>0</x>
@@ -498,7 +544,7 @@
                 <width>50%</width>
             </action>
         </keybind>
-        <keybind key="W-Right">    	# HalfRightScreen
+        <keybind key="W-A-Right">    	# HalfRightScreen
             <action name="UnmaximizeFull"/>
             <action name="MoveResizeTo">
                 <x>-0</x>
@@ -507,7 +553,7 @@
                 <width>50%</width>
             </action>
         </keybind>
-        <keybind key="W-Up">    	# HalfUpperScreen
+        <keybind key="W-A-Up">    	# HalfUpperScreen
             <action name="UnmaximizeFull"/>
             <action name="MoveResizeTo">
                 <x>0</x>
@@ -516,7 +562,7 @@
                 <height>50%</height>
             </action>
         </keybind>
-        <keybind key="W-Down">    	# HalfLowerScreen
+        <keybind key="W-A-Down">    	# HalfLowerScreen
             <action name="UnmaximizeFull"/>
             <action name="MoveResizeTo">
                 <x>0</x>
