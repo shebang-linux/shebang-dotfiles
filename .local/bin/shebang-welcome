@@ -73,7 +73,7 @@ else
     say "Not upgrading"
 fi
 
-doas wget -qO /usr/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/shebang-include.cfg
+wget -qO /home/$USER/.config/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/shebang-include.cfg
 
 if ! . shebang-include.cfg 2>/dev/null; then
     say "Failed to locate shebang-include.cfg in PATH" >&2
