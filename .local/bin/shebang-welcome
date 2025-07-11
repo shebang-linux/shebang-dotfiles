@@ -73,7 +73,7 @@ else
     say "Not upgrading"
 fi
 
-wget -qO /home/$USER/.config/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/shebang-include.cfg
+wget -qO /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
 
 if ! . shebang-include.cfg 2>/dev/null; then
     say "Failed to locate shebang-include.cfg in PATH" >&2
@@ -232,8 +232,6 @@ DOCUMENTATION_URL="https://github.com/shebang-linux/shebang/"
 SUPPORT_URL="https://github.com/orgs/shebang-linux/discussions/"
 BUG_REPORT_URL="https://github.com/shebang-linux/shebang/issues/"
 LOGO=shebang-og-logo' | doas tee /etc/os-release && doas chattr +i /etc/os-release
-
-wget -qO /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
 
 /var/lib/flatpak/exports/bin/net.mullvad.MullvadBrowser -headless &
 sleep 1s && pkill mullvad
