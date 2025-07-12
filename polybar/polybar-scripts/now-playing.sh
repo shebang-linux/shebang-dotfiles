@@ -12,5 +12,5 @@ else
         string:'org.mpris.MediaPlayer2.Player' string:'Metadata')
     artist=$(echo -e "$metadata" | awk -F '"' '/xesam:artist/{getline; getline; print $2}')
 
-    echo -e "${artist:0:32}"
+    echo -e "${artist:0:32} "
 fi
