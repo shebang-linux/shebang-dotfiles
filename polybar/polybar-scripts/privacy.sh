@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 
 MODULES=("snd_usb_audio" "uvcvideo" "gspca_main")
 
