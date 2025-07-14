@@ -244,7 +244,8 @@ user_pref("layout.spellcheckDefault", 0);
 user_pref("places.history.enabled", false);
 user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", false);
 user_pref("browser.privatebrowsing.autostart", false);
-user_pref("browser.startup.homepage", "about:profiles");' | tee user.js
+user_pref("browser.startup.homepage", "about:profiles");
+user_pref("network.trr.mode", 2);' | tee user.js
 cd /opt/.var/app/net.mullvad.MullvadBrowser/.mullvad-browser/.mullvad/mullvadbrowser/*default-release-tor/
 echo -e 'user_pref("network.proxy.type", 1);
 user_pref("network.proxy.socks", "127.0.0.1");
@@ -252,7 +253,8 @@ user_pref("network.proxy.socks_port", 9050);
 user_pref("network.proxy.socks_version", 5);
 user_pref("network.proxy.socks_remote_dns", true);
 user_pref("layout.spellcheckDefault", 0);
-user_pref("browser.startup.homepage", "https://check.torproject.org/");' | tee user.js
+user_pref("browser.startup.homepage", "https://check.torproject.org/");
+user_pref("network.trr.mode", 2);' | tee user.js
 cd
 
 echo -e "/sbin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
