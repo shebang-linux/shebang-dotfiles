@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 ## When you login to your Openbox session, this autostart script
 ## will be executed to set-up your environment and launch any applications
 ## you want to run at startup.
