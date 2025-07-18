@@ -101,4 +101,6 @@ export NVIDIA_DRIVER_CAPABILITIES=all
 export CUDA_LAUNCH_BLOCKING=0
 export CUDA_VISIBLE_DEVICES=0
 export OMP_WAIT_POLICY=ACTIVE
+export LOW_CPU_MEM_USAGE=true
+export USE_GPU_IF_AVAILABLE=true
 export BAT=$(ls /sys/class/power_supply/ | grep BAT | tail -n1)
