@@ -1,0 +1,21 @@
+#!/bin/bash -e
+
+usage() {
+  echo "Usage: pacman-source PACKAGE"
+  echo "Example: pacman-source pacman"
+  exit 1
+}
+
+if [ "$#" -ne 1 ]; then
+  usage
+fi
+
+PKG=$1
+
+git clone --depth 1 --progress "https://gitea.artixlinux.org/packages/$PKG.git" "/tmp/$PKG"
+
+cd "/tmp/$PKG" && vim .
+
+makepkg -rsicC --noconfirm
+
+rm -rfd "/tmp/$PKG"
