@@ -16,6 +16,8 @@ if [ "$#" -lt 1 ]; then
 fi
 
 for PACKAGE in "$@"; do
+  pacman -Q "$PACKAGE" &> /dev/null || { echo "Invalid package."; continue; }
+
   PKG=$(pacman -Q | grep "$PACKAGE" | awk '{print $1}' | head -n1)
 
   VER=$(pacman -Q | grep "$PKG" | awk '{print $2}' | head -n1)
