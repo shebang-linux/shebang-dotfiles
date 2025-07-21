@@ -11,11 +11,13 @@ if [ "$#" -lt 1 ]; then
 fi
 
 for PKG in "$@"; do
+  rm -rfd "/tmp/$PKG"
+
   git clone --depth 1 --progress "https://gitea.artixlinux.org/packages/$PKG.git" "/tmp/$PKG"
 
   cd "/tmp/$PKG" && vim .
 
-  makepkg -rsicC --noconfirm
+  makepkg -rsicC --noconfirm || makepkg -rsicC --noconfirm --skippgpcheck
 
   rm -rfd "/tmp/$PKG"
 done
