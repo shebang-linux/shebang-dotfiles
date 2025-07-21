@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 usage() {
-  echo "Usage: pacman-repair PACKAGE1 [PACKAGE2 ...]"
+  echo "Usage: pacman-source PACKAGE1 [PACKAGE2 ...]"
   echo "Example: pacman-source pacman"
   exit 1
 }
