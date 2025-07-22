@@ -10,31 +10,31 @@
 
 (sleep 5s && exec shebang-welcome --first-run) &
 
-$(sleep 1s && doas renice -n 19 -p $(pidof Xorg)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof Xorg)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pgrep dbus)) &
-$(sleep 1s && doas renice -n 19 -p $(pidof dbus-launch)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep dbus)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof dbus-launch)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pidof openbox)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof openbox)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pidof flatpak-session-helper)) &
-$(sleep 1s && doas renice -n 19 -p $(pidof flatpak-portal)) &
-$(sleep 1s && doas renice -n 19 -p $(pidof xdg-desktop-portal)) &
-$(sleep 1s && doas renice -n 19 -p $(pidof xdg-desktop-portal-gtk)) &
-$(sleep 1s && doas renice -n 19 -p $(pidof xdg-document-portal)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof flatpak-session-helper)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof flatpak-portal)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof xdg-desktop-portal)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof xdg-desktop-portal-gtk)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof xdg-document-portal)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pidof pipewire)) &
-$(exec nice -n 19 pipewire-pulse) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof pipewire)) &
+$(exec nice -n 19 ionice -c2 -n7 pipewire-pulse) &
 
-$(sleep 1s && doas renice -n 19 -p $(pidof wireplumber)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof wireplumber)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pidof bluetoothd)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof bluetoothd)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pgrep scx_flash)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep scx_flash)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pgrep tor)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep tor)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pgrep python)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep python)) &
 
 ## Set keyboard
 setxkbmap replaceme &
@@ -55,16 +55,16 @@ xset s off -dpms &
 xrdb -merge ~/.Xresources &
 
 ## Start Desktop
-$(exec nice -n 19 pcmanfm-qt --desktop >/dev/null 2>&1) &
+$(exec nice -n 19 ionice -c2 -n7 pcmanfm-qt --desktop >/dev/null 2>&1) &
 
 ## Start LXDE PolKit
-$(exec nice -n 19 lxpolkit >/dev/null 2>&1) &
+$(exec nice -n 19 ionice -c2 -n7 lxpolkit >/dev/null 2>&1) &
 
 ## Group start:
 ## 1. dunst - start
 ## 2. polybar - start
 ## 3. tint2 - start
-$(exec nice -n 19 dunst -word_wrap >/dev/null 2>&1 | exec polyrestart | exec nice -n 19 tint2 >/dev/null 2>&1) &
+$(exec nice -n 19 ionice -c2 -n7 dunst -word_wrap >/dev/null 2>&1 | exec polyrestart | exec nice -n 19 ionice -c2 -n7 tint2 >/dev/null 2>&1) &
 
 ## Fix monitor
 $(for output in $(xrandr --prop | grep -E -o -i "^[A-Z\-]+-[0-9]+"); do xrandr --output "$output" --set "scaling mode" "Full aspect"; done) &
