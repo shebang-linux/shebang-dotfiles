@@ -108,8 +108,8 @@
 " Map ALT+Enter in normal mode to open new split window horizontally
 	nnoremap <M-Enter> :split .<Enter>
 " Map ALT +/- in normal mode to resize split window vertically
-	nnoremap <M-KPlus> :vertical resize +10<Enter>
-	nnoremap <M-KMinus> :vertical resize -10<Enter>
+	nnoremap <M-<> :vertical resize +10<Enter>
+	nnoremap <M->> :vertical resize -10<Enter>
 " Map ALT =/- in normal mode to resize split window horizontally
 	nnoremap <M-=> :resize +10<Enter>
 	nnoremap <M--> :resize -10<Enter>
