@@ -1,4 +1,5 @@
 #!/usr/bin/sh
+
 # path to your "recent files" script, if you want to incorporate it:
 recent_script=/usr/bin/shebang-recent-files-pipemenu
 
