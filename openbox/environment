@@ -102,4 +102,7 @@ export CUDA_VISIBLE_DEVICES=0
 export OMP_WAIT_POLICY=ACTIVE
 export LOW_CPU_MEM_USAGE=true
 export USE_GPU_IF_AVAILABLE=true
+export TELEMETRY_DISABLED=1
+export TELEMETRY_ENABLED=0
+export DO_NOT_TRACK=1
 export BAT=$(ls /sys/class/power_supply/ | grep BAT | tail -n1)
