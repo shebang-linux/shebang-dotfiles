@@ -14,5 +14,5 @@ else
 
     echo -e "${artist:0:32} "
 
-    [ "$artist" ] || echo -e ""
+    [ "$artist" ] || echo ""
 fi
