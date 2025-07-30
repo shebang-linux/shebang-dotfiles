@@ -49,18 +49,25 @@ tee <<"EOF"
 |_      _|_|    ___) |  _  | |___| |_) / ___ \| |\  | |_| |
   |_||_| (_)   |____/|_| |_|_____|____/_/   \_\_| \_|\____|
 
-Welcome to Shebang Linux, your journey #!s here!
+Welcome to Shebang Linux
 
 This is a post-installation script designed to help you configure and get the most latest out of Shebang.
+You can run it at a later date by entering the command shebang-welcome in the terminal.
 
 EOF
 fi
 
 if cat /proc/cmdline | grep -q -i "label"; then
-    echo -e "Load keymap (default: us)" && read -p $"> " kbd && setxkbmap $kbd
-    echo -e "Install Shebang (y/n)" && read -p $"> " yn
-    if [[ "$yn" == "y" ]]; then
+    echo -e "Load keymap (default: us)" && read -p "> " KEYMAP && setxkbmap $KEYMAP || doas loadkeys $KEYMAP
+    doas sed -i -e "s/replaceme/$KEYMAP/" /home/$USER/.config/openbox/autostart
+    doas sed -i -e "s/replaceme/$KEYMAP/" /etc/skel/.config/openbox/autostart
+    doas sed -i -e "s/replaceme/$KEYMAP/" /root/.config/openbox/autostart
+
+    echo -e "Install Shebang" && read -p $"(y/N) > " YESNO
+    if [[ "$YESNO" =~ [Yy] ]]; then
         doas /usr/local/bin/setup-shebang
+        read -p $"(y/N) > " YESNO
+        [[ "$YESNO" =~ [Yy] ]] && doas reboot -f
     else
         say "Not installing"
     fi
