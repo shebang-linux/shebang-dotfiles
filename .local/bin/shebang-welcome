@@ -59,6 +59,7 @@ fi
 
 if cat /proc/cmdline | grep -q -i "label"; then
     echo -e "Load keymap (default: us)" && read -p "> " KEYMAP && setxkbmap $KEYMAP || doas loadkeys $KEYMAP
+    doas sed -i -e "s/replaceme/$KEYMAP/" /etc/pacman.d/hooks/set-keyboard-layout-back-to-normal.hook
     sed -i -e "s/replaceme/$KEYMAP/" /home/$USER/.config/openbox/autostart
     sed -i -e "s/replaceme/$KEYMAP/" /etc/skel/.config/openbox/autostart
     sed -i -e "s/replaceme/$KEYMAP/" /root/.config/openbox/autostart
