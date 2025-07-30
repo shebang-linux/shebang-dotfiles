@@ -66,13 +66,6 @@ if cat /proc/cmdline | grep -q -i "label"; then
     fi
 fi
 
-echo -e "Upgrade packages (y/n)" && read -p $"> " yn
-if [[ "$yn" == "y" ]]; then
-    doas pacman -Syyu --needed --noconfirm --disable-download-timeout
-else
-    say "Not upgrading"
-fi
-
 curl -so /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
 
 if ! . shebang-include.cfg 2>/dev/null; then
