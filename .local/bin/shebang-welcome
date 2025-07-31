@@ -60,9 +60,9 @@ fi
 if cat /proc/cmdline | grep -q -i "label"; then
     echo -e "Load keymap (default: us)" && read -p "> " KEYMAP && setxkbmap $KEYMAP || doas loadkeys $KEYMAP
     doas sed -i -e "s/replaceme/$KEYMAP/" /etc/pacman.d/hooks/set-keyboard-layout-back-to-normal.hook
-    sed -i -e "s/replaceme/$KEYMAP/" /home/$USER/.config/openbox/autostart
-    sed -i -e "s/replaceme/$KEYMAP/" /etc/skel/.config/openbox/autostart
-    sed -i -e "s/replaceme/$KEYMAP/" /root/.config/openbox/autostart
+    doas sed -i -e "s/replaceme/$KEYMAP/" /home/$USER/.config/openbox/autostart
+    doas sed -i -e "s/replaceme/$KEYMAP/" /etc/skel/.config/openbox/autostart
+    doas sed -i -e "s/replaceme/$KEYMAP/" /root/.config/openbox/autostart
 
     echo -e "Install Shebang" && read -p $"(y/N) > " YESNO
     if [[ "$YESNO" =~ [Yy] ]]; then
@@ -72,6 +72,8 @@ if cat /proc/cmdline | grep -q -i "label"; then
     else
         say "Not installing"
     fi
+
+    doas sed -i -e "s/doas //" /root/.config/openbox/autostart
 fi
 
 curl -so /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
