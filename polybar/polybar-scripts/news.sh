@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
 if [[ $(ip link | grep 'state UP' | wc -l) -gt 0 ]]; then
-	news_feed=$(curl --user-agent 'noleak' -s -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' https://feed.alternativeto.net/news/all)
+	news_feed=$(curl --user-agent 'noleak' -s -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' https://www.cnbc.com/id/100727362/device/rss/rss.html)
 	articles_feed=$(curl --user-agent 'noleak' -s -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' https://simplifiedprivacy.com/index.xml)
 	podcasts_feed=$(curl --user-agent 'noleak' -s -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' https://podcast.simplifiedprivacy.com/index.xml)
 	videos_feed=$(curl --user-agent 'noleak' -s -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' https://video.simplifiedprivacy.com/feed/)
