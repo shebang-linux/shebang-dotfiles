@@ -72,8 +72,6 @@ if cat /proc/cmdline | grep -q -i "label"; then
     else
         say "Not installing"
     fi
-
-    doas sed -i -e "s/doas //" /root/.config/openbox/autostart
 fi
 
 curl -so /home/$USER/.local/bin/shebang-include.cfg https://raw.githubusercontent.com/shebang-linux/shebang-dotfiles/main/.local/bin/shebang-include.cfg
