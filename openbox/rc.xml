@@ -576,7 +576,12 @@
         </keybind>
         <keybind key="C-Escape">    	# ?
             <action name="Execute">
-                <command>xdg-open 'http://youtu.be/2YrN3hQOr0o'</command>
+                <command>xdg-open 'https://anonymousplanet.org/guide/'</command>
+            </action>
+        </keybind>
+        <keybind key="F1">    	# Show Hotkeys
+            <action name="Execute">
+                <command>xdg-open 'https://github.com/orgs/shebang-linux/discussions/'</command>
             </action>
         </keybind>
     </keyboard>
