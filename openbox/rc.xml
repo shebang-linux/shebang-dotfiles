@@ -579,7 +579,7 @@
                 <command>xdg-open 'https://anonymousplanet.org/guide/'</command>
             </action>
         </keybind>
-        <keybind key="F1">    	# Show Hotkeys
+        <keybind key="F1">    		# Show Hotkeys
             <action name="Execute">
                 <command>xdg-open 'https://github.com/orgs/shebang-linux/discussions/'</command>
             </action>
