@@ -247,7 +247,7 @@
     sticky_history = no
 
     # Maximum amount of notifications kept in history
-    history_length = 0
+    history_length = 1
 
     ### Misc/Advanced ###
 
