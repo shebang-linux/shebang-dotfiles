@@ -6,7 +6,6 @@ else
 	IFACE=$(cat ~/.config/polybar/polybar-scripts/iface)
 	if [ "$IFACE" ]; then
 		doas macchanger -a $IFACE >/dev/null 2>&1
-		doas sv restart wpa_supplicant >/dev/null 2>&1 && doas sv restart dhcpcd >/dev/null 2>&1
 		rm ~/.config/polybar/polybar-scripts/iface >/dev/null 2>&1
 	fi
 fi
