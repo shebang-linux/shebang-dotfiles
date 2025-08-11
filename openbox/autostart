@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+## When you login to your Openbox session, this autostart script
+## will be executed to set-up your environment and launch any applications
+## you want to run at startup.
+##
+## If you do something cool with your autostart script and you think others
+## could benefit from your hack, please consider sharing it at:
+## http://github.com/orgs/shebang-linux/discussions/
+
+(sleep 5s && exec shebang-welcome --first-run) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof Xorg)) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep dbus)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof dbus-launch)) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof openbox)) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof flatpak-session-helper)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof flatpak-portal)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof xdg-desktop-portal)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof xdg-desktop-portal-gtk)) &
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof xdg-document-portal)) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof pipewire)) &
+$(exec nice -n 19 ionice -c2 -n7 pipewire-pulse) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof wireplumber)) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof bluetoothd)) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep scx_flash)) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep tor)) &
+
+$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep python)) &
+
+## Set keyboard
+setxkbmap replaceme &
+## Set keyboard settings - 500 ms delay and 10 cps (characters per second) repeat rate.
+## Adjust the values according to your preferences.
+xset r rate 500 10 &
+
+## Turn on tap to click
+#xinput set-prop $(xinput | awk '/Touchpad/{print $6}' | cut -d'=' -f2) $(xinput list-props $(xinput | awk '/Touchpad/{print $6}' | cut -d'=' -f2) | awk -F '[()]' '/Tapping Enabled \(/ && !/Default/{print $2}') 1
+
+## Turn off pointer acceleration
+xset m 0 0 &
+
+## Turn off blank display
+xset s off -dpms &
+
+## Merge resources
+xrdb -merge ~/.Xresources &
+
+## Start Desktop
+$(exec nice -n 19 ionice -c2 -n7 pcmanfm-qt --desktop >/dev/null 2>&1) &
+
+## Start LXDE PolKit
+$(exec nice -n 19 ionice -c2 -n7 lxpolkit >/dev/null 2>&1) &
+
+## Group start:
+## 1. dunst - start
+## 2. polybar - start
+## 3. tint2 - start
+$(exec nice -n 19 ionice -c2 -n7 dunst -word_wrap >/dev/null 2>&1 | exec polyrestart | exec nice -n 19 ionice -c2 -n7 tint2 >/dev/null 2>&1) &
+
+## Fix monitor
+$(for output in $(xrandr --prop | grep -E -o -i "^[A-Z\-]+-[0-9]+"); do xrandr --output "$output" --set "scaling mode" "Full aspect"; done) &
+
+## Optional (Uncomment programs you might want to run)
+## IRC Chat
+$(sleep 10s && exec tmux new -s irc -d torsocks irssi) &
+## RSS Reader
+#exec xterm -e newsboat -r &
+## Tor Router
+#exec doas /root/.local/bin/tor-router start &
+
+exit

@@ -1,0 +1,20 @@
+#!/usr/bin/sh
+
+if ! . shebang-include.cfg 2>/dev/null; then
+    echo '  Failed to locate shebang-include.cfg in PATH' >&2
+    exit 1
+fi
+
+menuStart
+menuSeparator 'Online Help'
+menuSubmenu 'ManpagesWWW' 'Manpages'
+menuItem 'Arch Manpage' 'xdg-open "http://man.archlinux.org/"'
+menuSubmenuEnd
+menuSubmenu 'OpenboxWWW' 'Openbox'
+menuItem 'Openbox Homepage' 'xdg-open "http://openbox.org/"'
+menuItem 'Openbox Getting Started' 'xdg-open "http://openbox.org/help/Getting_started"'
+menuItem 'Openbox Documentation' 'xdg-open "http://openbox.org/help/Contents"'
+menuItem 'Openbox FAQ' 'xdg-open "http://openbox.org/help/FAQ"'
+menuItem 'Openbox Community Portal' 'xdg-open "http://openbox.org/community_portal"'
+menuSubmenuEnd
+menuEnd

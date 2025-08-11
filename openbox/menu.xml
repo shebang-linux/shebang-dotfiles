@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+    <menu id="root-menu" label="Openbox 3">
+        <item label="Terminal Emulator">
+            <action name="Execute">
+                <execute>xterm -e bash</execute>
+            </action>
+        </item>
+        <item label="Web Browser">
+            <action name="Execute">
+                <execute>net.mullvad.MullvadBrowser</execute>
+            </action>
+        </item>
+        <item label="File Manager">
+            <action name="Execute">
+                <execute>pcmanfm-qt</execute>
+            </action>
+        </item>
+        <item label="Text Editor">
+            <action name="Execute">
+                <execute>featherpad</execute>
+            </action>
+        </item>
+        <item label="Media Player">
+            <action name="Execute">
+                <execute>mpv --player-operation-mode=pseudo-gui</execute>
+            </action>
+        </item>
+        <separator />
+        <menu id="graphics" label="Graphics">
+            <item label="Viewnior Image Viewer">
+                <action name="Execute">
+                    <execute>viewnior</execute>
+                </action>
+            </item>
+            <item label="SimpleScreenRecorder">
+                <action name="Execute">
+                    <execute>simplescreenrecorder --start-hidden</execute>
+                </action>
+            </item>
+            <separator label="Screenshooter" />
+            <item label="Now">
+                <action name="Execute">
+                    <execute>scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp;amp; viewnior ~/images/$f'</execute>
+                </action>
+            </item>
+            <item label="In 5 Seconds...">
+                <action name="Execute">
+                    <execute>scrot -d 5 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp;amp; viewnior ~/images/$f'</execute>
+                </action>
+            </item>
+            <item label="In 10 Seconds...">
+                <action name="Execute">
+                    <execute>scrot -d 10 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp;amp; viewnior ~/images/$f'</execute>
+                </action>
+            </item>
+            <item label="Selected Area... (click &amp; drag mouse)">
+                <action name="Execute">
+                    <execute>scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp;amp; viewnior ~/images/$f'</execute>
+                </action>
+            </item>
+        </menu>
+        <menu id="multimedia" label="Multimedia">
+            <item label="MPV Media Player">
+                <action name="Execute">
+                    <execute>mpv --player-operation-mode=pseudo-gui</execute>
+                </action>
+            </item>
+        </menu>
+        <menu id="network" label="Network">
+            <item label="PuTTY SSH/Telnet client">
+                <action name="Execute">
+                    <execute>putty</execute>
+                </action>
+            </item>
+            <item label="Transmission BitTorrent client">
+                <action name="Execute">
+                    <execute>transmission-qt</execute>
+                </action>
+            </item>
+            <item label="IRC client">
+                <action name="Execute">
+                    <execute>xterm -e tmux attach -t irc</execute>
+                </action>
+            </item>
+            <item label="VNC client">
+                <action name="Execute">
+                    <execute>vncviewer</execute>
+                </action>
+            </item>
+            <item label="RSS Reader">
+                <action name="Execute">
+                    <execute>xterm -e newsboat -r</execute>
+                </action>
+            </item>
+        </menu>
+        <menu id="office" label="Office">
+            <item label="Archive Manager">
+                <action name="Execute">
+                    <execute>xarchiver</execute>
+                </action>
+            </item>
+            <item label="Calculator">
+                <action name="Execute">
+                    <execute>xterm -e bc</execute>
+                </action>
+            </item>
+            <item label="Google Docs">
+                <action name="Execute">
+                    <execute>xdg-open 'http://drive.google.com/'</execute>
+                </action>
+            </item>
+        </menu>
+        <separator />
+        <menu execute="shebang-applications-pipemenu" id="pipe-applicationsmenu" label="Applications" />
+        <separator />
+        <menu execute="shebang-places-pipemenu" id="pipe-placesmenu" label="Places" />
+        <menu execute="shebang-recent-files-pipemenu" id="pipe-recentfilesmenu" label="Recent Files" />
+        <separator />
+        <menu id="settings" label="Settings">
+            <menu id="obConfig" label="Openbox">
+                <item label="Edit menu.xml">
+                    <action name="Execute">
+                        <execute>xterm -e vim ~/.config/openbox/menu.xml</execute>
+                    </action>
+                </item>
+                <item label="Edit rc.xml">
+                    <action name="Execute">
+                        <execute>xterm -e vim ~/.config/openbox/rc.xml</execute>
+                    </action>
+                </item>
+                <item label="Edit autostart">
+                    <action name="Execute">
+                        <execute>xterm -e vim ~/.config/openbox/autostart</execute>
+                    </action>
+                </item>
+                <separator />
+                <item label="Reconfigure">
+                    <action name="Reconfigure" />
+                </item>
+                <item label="Restart">
+                    <action name="Restart" />
+                </item>
+            </menu>
+            <item label="Display Settings">
+                <action name="Execute">
+                    <execute>arandr</execute>
+                </action>
+            </item>
+            <item label="Edit Default Applications">
+                <action name="Execute">
+                    <execute>lxsession-default-apps</execute>
+                </action>
+            </item>
+            <item label="User Interface Settings">
+                <action name="Execute">
+                    <execute>lxappearance</execute>
+                </action>
+            </item>
+            <item label="Print Settings">
+                <action name="Execute">
+                    <execute>system-config-printer</execute>
+                </action>
+            </item>
+        </menu>
+        <menu id="system" label="System">
+            <item label="Task Manager (top)">
+                <action name="Execute">
+                    <execute>xterm -e top</execute>
+                </action>
+            </item>
+            <item label="Terminal Emulator (root)">
+                <action name="Execute">
+                    <execute>shebang-gksudo xterm</execute>
+                </action>
+            </item>
+            <item label="File Manager (root)">
+                <action name="Execute">
+                    <execute>shebang-gksudo pcmanfm-qt</execute>
+                </action>
+            </item>
+        </menu>
+        <menu id="help" label="Help" execute="shebang-help-pipemenu" />
+        <separator />
+        <item label="Lock Screen">
+            <action name="Execute">
+                <execute>slock</execute>
+            </action>
+        </item>
+        <menu id="ExitPipeMenu" label="Exit" execute="shebang-exit"  />
+    </menu>
+</openbox_menu>

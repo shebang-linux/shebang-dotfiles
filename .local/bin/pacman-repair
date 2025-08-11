@@ -1,0 +1,32 @@
+#!/bin/bash -e
+
+if [ "$(id -u)" -ne 0 ]; then
+  echo "This script must be run as root, use 'sudo' or run it as root."
+  exit 1
+fi
+
+usage() {
+  echo "Usage: pacman-repair PACKAGE1 [PACKAGE2 ...]"
+  echo "Example: pacman-repair pacman"
+  exit 1
+}
+
+if [ "$#" -lt 1 ]; then
+  usage
+fi
+
+for PACKAGE in "$@"; do
+  pacman -Q "$PACKAGE" &> /dev/null || { echo "Invalid package."; continue; }
+
+  PKG=$(pacman -Q | grep "$PACKAGE" | awk '{print $1}' | head -n1)
+
+  VER=$(pacman -Q | grep "$PKG" | awk '{print $2}' | head -n1)
+
+  PKG_LIST=$(curl -s "https://archive.artixlinux.org/packages/${PKG:0:1}/$PKG/" | grep -oP "$PKG-[^\"<]*?\.pkg\.tar\.zst" | sort -Vu)
+
+  OLD_PKG=$(echo -e "$PKG_LIST" | grep -B100 "$PKG-$VER" | grep -v "$VER" | tail -n1)
+
+  wget -qO "/tmp/${OLD_PKG}" "https://archive.artixlinux.org/packages/${PKG:0:1}/$PKG/$OLD_PKG"
+
+  pacman -U --noconfirm "/tmp/${OLD_PKG}"
+done

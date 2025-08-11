@@ -1,0 +1,25 @@
+#!/bin/bash -e
+
+usage() {
+  echo "Usage: pacman-source PACKAGE1 [PACKAGE2 ...]"
+  echo "Example: pacman-source pacman"
+  exit 1
+}
+
+if [ "$#" -lt 1 ]; then
+  usage
+fi
+
+for PKG in "$@"; do
+  pacman -Ss "^$PKG$" &> /dev/null || { echo "Invalid package."; continue; }
+
+  rm -rfd "/tmp/$PKG"
+
+  git clone --depth 1 --progress "https://gitea.artixlinux.org/packages/$PKG.git" "/tmp/$PKG"
+
+  cd "/tmp/$PKG" && vim .
+
+  makepkg -rsicC --noconfirm || makepkg -rsicC --noconfirm --skippgpcheck
+
+  rm -rfd "/tmp/$PKG"
+done

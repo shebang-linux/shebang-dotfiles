@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+
+killall polybar >/dev/null 2>&1
+
+if type "xrandr"; then
+  for i in $(xrandr --query | grep " connected" | cut -d " " -f1); do
+    MON=$i exec nice -n 19 ionice -c2 -n7 polybar -q --reload main -c ~/.config/polybar/config.ini >/dev/null 2>&1 &
+  done
+else
+  $(exec nice -n 19 ionice -c2 -n7 polybar -q --reload main -c ~/.config/polybar/config.ini >/dev/null 2>&1) &
+fi
