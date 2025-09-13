@@ -14,6 +14,7 @@ for PKG in "$@"; do
   pacman -Ss "^$PKG$" &> /dev/null || { echo "Invalid package."; continue; }
 
   rm -rfd "/tmp/$PKG"
+  rm -rfd "/var/lib/pacman/sources/$PKG"
 
   git clone --depth 1 --progress "https://gitea.artixlinux.org/packages/$PKG.git" "/tmp/$PKG"
 
