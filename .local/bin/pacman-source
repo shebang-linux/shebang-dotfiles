@@ -19,7 +19,9 @@ for PKG in "$@"; do
 
   cd "/tmp/$PKG" && vim .
 
-  makepkg -rsicC --noconfirm --skippgpcheck
+  makepkg -d --noconfirm --skippgpcheck
 
-  rm -rfd "/tmp/$PKG"
+  cd "/var/lib/pacman/sources/$PKG" && vim . && cd "/tmp/$PKG"
+
+  makepkg -si --noconfirm --skippgpcheck
 done
