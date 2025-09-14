@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
 updates() {
-        doas pacman -Syw >/dev/null
+        doas pacman -Syw &>/dev/null
         list_upgradeable=$(doas pacman -Qu | wc -l)
         if [ "$list_upgradeable" -gt "0" ]; then
             echo "[u]"
