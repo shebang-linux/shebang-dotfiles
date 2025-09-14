@@ -20,7 +20,7 @@ for PKG in "$@"; do
 
   cd "/tmp/$PKG" && vim .
 
-  makepkg -do
+  makepkg -do --skippgpcheck
 
   cd "/var/lib/pacman/sources/$PKG/src" && vim . && cd "/tmp/$PKG"
 
