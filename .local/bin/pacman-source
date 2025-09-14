@@ -13,16 +13,16 @@ fi
 for PKG in "$@"; do
   pacman -Ss "^$PKG$" &> /dev/null || { echo "Invalid package."; continue; }
 
-  rm -rfd "/tmp/$PKG"
+  rm -rfd "/var/lib/pacman/sources/$PKG-PKGBUILD"
   rm -rfd "/var/lib/pacman/sources/$PKG"
 
-  git clone --depth 1 --progress "https://gitea.artixlinux.org/packages/$PKG.git" "/tmp/$PKG"
+  git clone --depth 1 --progress "https://gitea.artixlinux.org/packages/$PKG.git" "/var/lib/pacman/sources/$PKG-PKGBUILD"
 
-  cd "/tmp/$PKG" && vim .
+  cd "/var/lib/pacman/sources/$PKG-PKGBUILD" && vim .
 
   makepkg -do --skippgpcheck
 
-  cd "/var/lib/pacman/sources/$PKG/src" && vim . && cd "/tmp/$PKG"
+  cd "/var/lib/pacman/sources/$PKG/src" && vim . && cd "/var/lib/pacman/sources/$PKG-PKGBUILD"
 
   makepkg -ersi --noconfirm --skippgpcheck
 done
