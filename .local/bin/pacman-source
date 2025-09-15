@@ -20,9 +20,9 @@ for PKG in "$@"; do
 
   cd "/var/lib/pacman/sources/$PKG-PKGBUILD" && vim .
 
-  makepkg -do --skippgpcheck
+  makepkg -do
 
   cd "/var/lib/pacman/sources/$PKG/src" && vim . && cd "/var/lib/pacman/sources/$PKG-PKGBUILD"
 
-  makepkg -ersi --noconfirm --skippgpcheck
+  makepkg -ersi --noconfirm
 done
