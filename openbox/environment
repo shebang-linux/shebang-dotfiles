@@ -25,7 +25,6 @@ export LP_CL=1
 export LP_NO_RAST=1
 export SDL_VIDEO_YUV_HWACCEL=1
 export EGL_PLATFORM=wayland
-export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_SESSION=openbox
 export XDG_CURRENT_DESKTOP=LXDE
 export CLUTTER_BACKEND=wayland,x11
