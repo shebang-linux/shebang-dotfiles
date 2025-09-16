@@ -23,7 +23,7 @@ for PKG in "$@"; do
 
   cd "/var/lib/pacman/sources/$PKG/src" && vim . && cd "/var/lib/pacman/sources/$PKG-PKGBUILD"
 
-  makepkg -Cei --noconfirm
+  makepkg -ei --noconfirm
 
   doas pacman -Qqdt && doas pacman -Rddns --noconfirm $(pacman -Qqdtt)
 done
