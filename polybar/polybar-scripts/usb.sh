@@ -1,19 +1,15 @@
 #!/usr/bin/sh
 
 usb_print() {
-    devices=$(lsblk -Jplno NAME,TYPE,RM,SIZE,MOUNTPOINT,VENDOR)
+    devices=$(lsblk -Jplno NAME,RM,MOUNTPOINT)
+
     output=""
 
     for unmounted in $(echo -e "$devices" | jq -r '.blockdevices[] | select(.rm == true) | select(.mountpoint == null) | .name'); do
-        unmounted=$(echo -e "$unmounted" | tr -d "[:digit:]")
-        unmounted=$(echo -e "$devices" | jq -r '.blockdevices[] | select(.name == "'"$unmounted"'") | .vendor')
-        unmounted=$(echo -e "$unmounted" | tr -d ' ')
-
         output="\uf052"
     done
 
-    for mounted in $(echo -e "$devices" | jq -r '.blockdevices[] | select(.rm == true) | select(.mountpoint != null) | .size'); do
-
+    for mounted in $(echo -e "$devices" | jq -r '.blockdevices[] | select(.rm == true) | select(.mountpoint == null) | .name'); do
         output="\uf052"
     done
 
@@ -22,7 +18,7 @@ usb_print() {
 
 case "$1" in
     --eject)
-        devices=$(lsblk -Jplno NAME,TYPE,RM,MOUNTPOINT)
+        devices=$(lsblk -Jplno NAME,RM,MOUNTPOINT)
 
         for unmount in $(echo "$devices" | jq -r '.blockdevices[] | select(.rm == true) | select(.mountpoint != null) | .name'); do
             udisksctl unmount --no-user-interaction -b "$unmount"
