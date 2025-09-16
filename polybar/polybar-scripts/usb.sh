@@ -5,11 +5,11 @@ usb_print() {
 
     output=""
 
-    for unmounted in $(echo -e "$devices" | jq -r '.blockdevices[] | select(.rm == true) | select(.mountpoint == null) | .name'); do
+    for mounted in $(echo -e "$devices" | jq -r '.blockdevices[] | select(.rm == true) | select(.mountpoint != null) | .name'); do
         output="\uf052"
     done
 
-    for mounted in $(echo -e "$devices" | jq -r '.blockdevices[] | select(.rm == true) | select(.mountpoint == null) | .name'); do
+    for unmounted in $(echo -e "$devices" | jq -r '.blockdevices[] | select(.rm == true) | select(.mountpoint == null) | .name'); do
         output="\uf052"
     done
 
