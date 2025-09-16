@@ -5,5 +5,5 @@ alias grep='grep --color=auto'
 alias wget="wget -U 'noleak'"
 alias curl="curl --user-agent 'noleak'"
 
-[[ -z $DISPLAY && $TERM != 'xterm' && $XDG_VTNR -eq 1 ]] && exec startx --
+[[ -z $DISPLAY && $TERM != 'xterm' && $XDG_VTNR -eq 1 ]] && exec startx -- -ignoreABI
 [[ -z $DISPLAY && $TERM != 'xterm' && $XDG_VTNR -ne 1 ]] && bash
