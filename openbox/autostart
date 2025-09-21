@@ -76,5 +76,6 @@ $(sleep 10s && exec tmux new -s irc -d torsocks irssi) &
 #exec xterm -e newsboat -r &
 ## Tor Router
 #exec doas /root/.local/bin/tor-router start &
-
+## Privacy Toggle
+$(/home/$USER/.config/polybar/polybar-scripts/privacy.sh --toggle && /home/$USER/.config/polybar/polybar-scripts/privacy.sh --toggle) &
 exit
