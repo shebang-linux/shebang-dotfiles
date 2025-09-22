@@ -10,31 +10,33 @@
 
 (sleep 5s && exec shebang-welcome --first-run) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof Xorg)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof Xorg) && doas ionice -c2 -n7 -p $(pidof Xorg)) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep dbus)) &
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof dbus-launch)) &
+$(sleep 1s && doas renice -n 19 -p $(pgrep dbus) && doas ionice -c2 -n7 -p $(pgrep dbus)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof dbus-launch) && doas ionice -c2 -n7 -p $(pidof dbus-launch)) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof openbox)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof openbox) && doas ionice -c2 -n7 -p $(pidof openbox)) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof flatpak-session-helper)) &
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof flatpak-portal)) &
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof xdg-desktop-portal)) &
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof xdg-desktop-portal-gtk)) &
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof xdg-document-portal)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof flatpak-session-helper) && doas ionice -c2 -n7 -p $(pidof flatpak-session-helper)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof flatpak-portal) && doas ionice -c2 -n7 -p $(pidof flatpak-portal)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof xdg-desktop-portal) && doas ionice -c2 -n7 -p $(pidof xdg-desktop-portal)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof xdg-desktop-portal-gtk) && doas ionice -c2 -n7 -p $(pidof xdg-desktop-portal-gtk)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof xdg-document-portal) && doas ionice -c2 -n7 -p $(pidof xdg-document-portal)) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof pipewire)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof pipewire) && doas ionice -c2 -n7 -p $(pidof pipewire)) &
 $(exec nice -n 19 ionice -c2 -n7 pipewire-pulse) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof wireplumber)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof wireplumber) && doas ionice -c2 -n7 -p $(pidof wireplumber)) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pidof bluetoothd)) &
+$(sleep 1s && doas renice -n 19 -p $(pidof bluetoothd) && doas ionice -c2 -n7 -p $(pidof bluetoothd)) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep scx_flash)) &
+$(sleep 1s && doas renice -n 19 -p $(pgrep scx_flash) && doas ionice -c2 -n7 -p $(pgrep scx_flash)) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep tor)) &
+$(sleep 1s && doas renice -n 19 -p $(pgrep tor) && doas ionice -c2 -n7 -p $(pgrep tor)) &
 
-$(sleep 1s && doas renice -n 19 ionice -c2 -n7 -p $(pgrep python)) &
+$(sleep 1s && doas renice -n 19 -p $(pgrep python) && doas ionice -c2 -n7 -p $(pgrep python)) &
+
+$(sleep 1s && doas renice -n 19 -p $(pgrep preload) && doas ionice -c2 -n7 -p $(pgrep preload)) &
 
 ## Set keyboard
 setxkbmap replaceme &
