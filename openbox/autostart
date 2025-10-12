@@ -13,7 +13,6 @@
 $(sleep 1s && doas renice -n 19 -p $(pidof Xorg) && doas ionice -c2 -n7 -p $(pidof Xorg)) &
 
 $(sleep 1s && doas renice -n 19 -p $(pgrep dbus) && doas ionice -c2 -n7 -p $(pgrep dbus)) &
-$(sleep 1s && doas renice -n 19 -p $(pidof dbus-launch) && doas ionice -c2 -n7 -p $(pidof dbus-launch)) &
 
 $(sleep 1s && doas renice -n 19 -p $(pidof openbox) && doas ionice -c2 -n7 -p $(pidof openbox)) &
 
