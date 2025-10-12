@@ -19,11 +19,11 @@ for PKG in "$@"; do
 
   cd "/var/lib/pacman/sources/$PKG-PKGBUILD" && vim . && . PKGBUILD && gpg --recv-keys "${validpgpkeys[@]}"
 
-  makepkg -so --needed --noconfirm
+  yes | makepkg -so --needed
 
   cd "/var/lib/pacman/sources/$PKG/src" && vim . && cd "/var/lib/pacman/sources/$PKG-PKGBUILD"
 
-  makepkg -ei --noconfirm
+  yes | makepkg -ei
 
   doas pacman -Qqdt && doas pacman -Rddns --noconfirm $(pacman -Qqdtt)
 done
