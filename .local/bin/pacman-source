@@ -17,7 +17,7 @@ for PKG in "$@"; do
 
   [ -d "/var/lib/pacman/sources/$PKG-PKGBUILD" ] || git clone --depth 1 --progress "https://gitea.artixlinux.org/packages/$PKG.git" "/var/lib/pacman/sources/$PKG-PKGBUILD"
 
-  cd "/var/lib/pacman/sources/$PKG-PKGBUILD" && vim .
+  cd "/var/lib/pacman/sources/$PKG-PKGBUILD" && vim . && . PKGBUILD && gpg --recv-keys "${validpgpkeys[@]}"
 
   makepkg -so --needed --noconfirm
 
