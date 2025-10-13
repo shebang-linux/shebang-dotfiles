@@ -14,28 +14,11 @@ $(sleep 1s && doas renice -n 19 -p $(pidof Xorg) && doas ionice -c2 -n7 -p $(pid
 
 $(sleep 1s && doas renice -n 19 -p $(pgrep dbus) && doas ionice -c2 -n7 -p $(pgrep dbus)) &
 
-$(sleep 1s && doas renice -n 19 -p $(pidof openbox) && doas ionice -c2 -n7 -p $(pidof openbox)) &
-
 $(sleep 1s && doas renice -n 19 -p $(pidof flatpak-session-helper) && doas ionice -c2 -n7 -p $(pidof flatpak-session-helper)) &
 $(sleep 1s && doas renice -n 19 -p $(pidof flatpak-portal) && doas ionice -c2 -n7 -p $(pidof flatpak-portal)) &
 $(sleep 1s && doas renice -n 19 -p $(pidof xdg-desktop-portal) && doas ionice -c2 -n7 -p $(pidof xdg-desktop-portal)) &
 $(sleep 1s && doas renice -n 19 -p $(pidof xdg-desktop-portal-gtk) && doas ionice -c2 -n7 -p $(pidof xdg-desktop-portal-gtk)) &
 $(sleep 1s && doas renice -n 19 -p $(pidof xdg-document-portal) && doas ionice -c2 -n7 -p $(pidof xdg-document-portal)) &
-
-$(sleep 1s && doas renice -n 19 -p $(pidof pipewire) && doas ionice -c2 -n7 -p $(pidof pipewire)) &
-$(exec nice -n 19 ionice -c2 -n7 pipewire-pulse) &
-
-$(sleep 1s && doas renice -n 19 -p $(pidof wireplumber) && doas ionice -c2 -n7 -p $(pidof wireplumber)) &
-
-$(sleep 1s && doas renice -n 19 -p $(pidof bluetoothd) && doas ionice -c2 -n7 -p $(pidof bluetoothd)) &
-
-$(sleep 1s && doas renice -n 19 -p $(pgrep scx_flash) && doas ionice -c2 -n7 -p $(pgrep scx_flash)) &
-
-$(sleep 1s && doas renice -n 19 -p $(pgrep tor) && doas ionice -c2 -n7 -p $(pgrep tor)) &
-
-$(sleep 1s && doas renice -n 19 -p $(pgrep python) && doas ionice -c2 -n7 -p $(pgrep python)) &
-
-$(sleep 1s && doas renice -n 19 -p $(pgrep preload) && doas ionice -c2 -n7 -p $(pgrep preload)) &
 
 ## Set keyboard
 setxkbmap replaceme &
@@ -52,6 +35,9 @@ xset m 0 0 &
 ## Turn off blank display
 xset s off -dpms &
 
+## Fix monitor
+$(for output in $(xrandr --prop | grep -E -o -i "^[A-Z\-]+-[0-9]+"); do xrandr --output "$output" --set "scaling mode" "Full aspect"; done) &
+
 ## Merge resources
 xrdb -merge ~/.Xresources &
 
@@ -67,12 +53,9 @@ $(exec nice -n 19 ionice -c2 -n7 lxpolkit >/dev/null 2>&1) &
 ## 3. tint2 - start
 #$(exec nice -n 19 ionice -c2 -n7 dunst -word_wrap >/dev/null 2>&1 | exec polyrestart | exec nice -n 19 ionice -c2 -n7 tint2 >/dev/null 2>&1) &
 
-## Fix monitor
-$(for output in $(xrandr --prop | grep -E -o -i "^[A-Z\-]+-[0-9]+"); do xrandr --output "$output" --set "scaling mode" "Full aspect"; done) &
-
 ## Optional (Uncomment programs you might want to run)
 ## IRC Chat
-$(sleep 10s && exec tmux new -s irc -d torsocks irssi) &
+$(sleep 10s && exec nice -n 19 ionice -c2 -n7 tmux new -s irc -d torsocks irssi) &
 ## RSS Reader
 #exec xterm -e newsboat -r &
 ## Tor Router
