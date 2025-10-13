@@ -1,3 +1,2 @@
-exec pipewire &
-sleep 0.25
-exec openbox-session
+exec nice -n 19 ionice -c2 -n7 pipewire &
+exec nice -n 19 ionice -c2 -n7 openbox-session
