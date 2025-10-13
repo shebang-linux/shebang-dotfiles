@@ -9,6 +9,6 @@ alias grep='grep --color=auto'
 alias wget="wget -U 'noleak'"
 alias curl="curl --user-agent 'noleak'"
 
-tmux &> /dev/null && exit
+nice -n 19 ionice -c2 -n7 tmux &> /dev/null && exit
 
 . torsocks on &> /dev/null
