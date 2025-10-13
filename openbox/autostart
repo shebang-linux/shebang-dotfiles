@@ -36,7 +36,7 @@ xset m 0 0 &
 xset s off -dpms &
 
 ## Fix monitor
-$(for output in $(xrandr --prop | grep -E -o -i "^[A-Z\-]+-[0-9]+"); do xrandr --output "$output" --set "scaling mode" "Full aspect"; done) &
+$(for output in $(xrandr --prop | grep -E -o -i "^[A-Z\-]+-[0-9]+"); do xrandr --output "$output" --set "max bpc" 8 --set "scaling mode" "Full aspect"; done) &
 
 ## Merge resources
 xrdb -merge ~/.Xresources &
