@@ -62,4 +62,5 @@ $(sleep 10s && exec nice -n 19 ionice -c2 -n7 tmux new -s irc -d torsocks irssi)
 #exec doas /root/.local/bin/tor-router start &
 ## Privacy Toggle
 $(/home/$USER/.config/polybar/polybar-scripts/privacy.sh --toggle && /home/$USER/.config/polybar/polybar-scripts/privacy.sh --toggle) &
+
 exit
