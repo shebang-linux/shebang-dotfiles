@@ -4,3 +4,7 @@ alias dir='dir -h --color=auto'
 alias grep='grep --color=auto'
 alias wget="wget -U 'noleak'"
 alias curl="curl --user-agent 'noleak'"
+
+[[ $- != *i* ]] && return
+
+PS1='$(echo -e "[\033[01;01m${debian_chroot:+($debian_chroot)}$(whoami)\033[00m@\033[01;01m$(uname -n) \033[00m$(pwd | sed "s|^$HOME|~|")")] '
