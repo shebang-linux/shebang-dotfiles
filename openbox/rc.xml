@@ -449,9 +449,9 @@
             <action name="Execute">
                 <startupnotify>
                     <enabled>true</enabled>
-                    <name>net.mullvad.MullvadBrowser</name>
+                    <name>Web Browser</name>
                 </startupnotify>
-                <command>net.mullvad.MullvadBrowser</command>
+                <command>xdg-open http://</command>
             </action>
         </keybind>
         <keybind key="W-l">
