@@ -12,16 +12,14 @@ XTerm*geometry: 80x30
 XTerm*internalBorder: 10
 XTerm*borderWidth: 0
 
-XTerm*utf8: 1
-XTerm*utf8Title: true
-XTerm*utf8Fonts: always
+XTerm*utf8: 0
+XTerm*utf8Title: false
+XTerm*utf8Fonts: never
 XTerm*renderFont: true
 XTerm*forceBoxChars: false
 XTerm*background: #212121
 XTerm*foreground: #F0F0F0
 XTerm*dynamicColors: true
-XTerm*boldMode: true
-XTerm*boldColors: true
 XTerm*toolBar: false
 XTerm*scrollBar: false
 XTerm*fastScroll: true
