@@ -8,7 +8,7 @@
         </item>
         <item label="Web Browser">
             <action name="Execute">
-                <execute>net.mullvad.MullvadBrowser</execute>
+                <execute>xdg-open http://</execute>
             </action>
         </item>
         <item label="File Manager">
